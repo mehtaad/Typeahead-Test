@@ -2,9 +2,11 @@
 <html ng-app="plunker">
   <head>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular-animate.min.js"></script>
     <script src="ui-bootstrap-tpls-0.11.js"></script>
     <script src="example.js"></script>
     <link href="bootstrap.css" rel="stylesheet">
+	<link href="slidedown.css" rel="stylesheet">
   </head>
   <body>
 
@@ -14,9 +16,23 @@
       <span bind-html-unsafe="match.label | typeaheadHighlight:query"></span>
   </a>
 </script>
+<form name="myform">
 <div class='container-fluid' ng-controller="TypeaheadCtrl">
+<input type="text" ng-model = 'newdt' placeholder="mm/dd/yyyy">
+<div class="row">
+        <div class="col-md-6">
+            <p class="input-group">
+              <input type="text" placeholder="mm/dd/yyyy" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2020-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+				<button type="button" class="btn btn-default" ng-click="checkdate(dt)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>
+        </div>
+    </div>
+	</form>
 
-    <h4>Static arrays</h4>
+    <!-- <h4>Static arrays</h4>
     <pre>Model: {{selected | json}}</pre>
     <input type="text" ng-model="selected" typeahead="state for state in states | filter:$viewValue" class="form-control">
 
@@ -27,7 +43,7 @@
 
     <h4>Custom templates for results</h4>
     <pre>Model: {{customSelected | json}}</pre>
-    <input type="text" ng-model="customSelected" placeholder="Custom template" typeahead="state as state.name for state in statesWithFlags | filter:{name:$viewValue}" typeahead-template-url="customTemplate.html" class="form-control">
+    <input type="text" ng-model="customSelected" placeholder="Custom template" typeahead="state as state.name for state in statesWithFlags | filter:{name:$viewValue}" typeahead-template-url="customTemplate.html" class="form-control"> -->
 </div>
   </body>
 </html>
